@@ -2,6 +2,17 @@
 
 > **Note on repository visibility:** Komen is an actively developed commercial product. To protect intellectual property, the source code is kept private. This repository serves as a technical showcase, documenting the system architecture, engineering decisions, and the development journey behind the application.
 
+---
+
+## 📲 Download & Try Komen
+
+The application is currently available for Android devices. Experience the gamified study flow firsthand by downloading it directly from the Google Play Store:
+
+<a href="https://play.google.com/store/apps/details?id=com.gotagames.komen" target="_blank">
+  <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" height="60"/>
+</a>
+
+---
 ## The Vision
 
 Studying is often treated as a test of endurance. Students struggle with organization, lose motivation over time, and rarely get immediate, personalized feedback on their progress. Traditional methods are repetitive and disconnected from how modern learning actually works.
