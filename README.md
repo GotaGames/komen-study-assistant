@@ -19,7 +19,6 @@ Studying is often treated as a test of endurance. Students struggle with organiz
 
 I built Komen to change that dynamic. It is not just another task manager. Komen bridges the gap between artificial intelligence, study management, and gamification to create an ecosystem where students actually want to learn. It handles the heavy lifting of routine organization, generates tailored quizzes on the fly, evaluates answers using AI, and—most importantly—works perfectly offline.
 
-[I will insert a high-quality screenshot or GIF of the Komen Dashboard here]
 
 ---
 
@@ -27,8 +26,8 @@ I built Komen to change that dynamic. It is not just another task manager. Komen
 
 <p align="center">
   <img src="assets/dashboard.jpg" width="30%" alt="Komen Dashboard" />
-  <!--img src="assets/study.png" width="30%" alt="Study Session" />
-  <img src="assets/analytics.png" width="30%" alt="Analytics and Progress" /-->
+  <img src="assets/study.jpg" width="30%" alt="Study Session" />
+  <img src="assets/analytics.jpg" width="30%" alt="Analytics and Progress" />
 </p>
 
 ## Under the Hood
