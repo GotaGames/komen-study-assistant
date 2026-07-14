@@ -26,7 +26,7 @@ I built Komen to change that dynamic. It is not just another task manager. Komen
 ### Product Screenshots
 
 <p align="center">
-  <img src="assets/dashboard.png" width="30%" alt="Komen Dashboard" />
+  <img src="assets/dashboard.jpg" width="30%" alt="Komen Dashboard" />
   <!--img src="assets/study.png" width="30%" alt="Study Session" />
   <img src="assets/analytics.png" width="30%" alt="Analytics and Progress" /-->
 </p>
