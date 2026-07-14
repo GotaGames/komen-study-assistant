@@ -4,7 +4,7 @@
 
 ---
 
-## 📲 Download & Try Komen
+## Download & Try Komen
 
 The application is currently available for Android devices. Experience the gamified study flow firsthand by downloading it directly from the Google Play Store:
 
@@ -22,6 +22,14 @@ I built Komen to change that dynamic. It is not just another task manager. Komen
 [I will insert a high-quality screenshot or GIF of the Komen Dashboard here]
 
 ---
+
+### Product Screenshots
+
+<p align="center">
+  <img src="assets/dashboard.png" width="30%" alt="Komen Dashboard" />
+  <!--img src="assets/study.png" width="30%" alt="Study Session" />
+  <img src="assets/analytics.png" width="30%" alt="Analytics and Progress" /-->
+</p>
 
 ## Under the Hood
 
