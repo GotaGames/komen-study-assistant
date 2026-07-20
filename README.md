@@ -76,12 +76,6 @@ As the app grew to include study diaries, progress tracking, and gamified elemen
 
 Designing the Supabase schema required forward-thinking. I had to model relations for users, study sessions, dynamic AI content, and progress tracking in a way that remains performant today but is flexible enough to support future features like learning analytics and team collaboration.
 
-### System Architecture Diagram
-
-### System Architecture Diagram
-
-![System Architecture Diagram](https://quickchart.io/mermaid?chart=graph%20TD%0A%20%20%20%20classDef%20client%20fill:%23f9f9f9,stroke:%23333,stroke-width:2px;%0A%20%20%20%20classDef%20backend%20fill:%23e1f5fe,stroke:%230288d1,stroke-width:2px;%0A%20%20%20%20classDef%20storage%20fill:%23efebe9,stroke:%235d4037,stroke-width:2px;%0A%20%20%20%20classDef%20external%20fill:%23ede7f6,stroke:%235e35b1,stroke-width:2px;%0A%0A%20%20%20%20subgraph%20Mobile_Client%20%5BMobile%20Client%20-%20Flutter%5D%0A%20%20%20%20%20%20%20%20UI%5BFlutter%20UI%20/%20Widgets%5D%0A%20%20%20%20%20%20%20%20Sync%5BSync%20Engine%5D%0A%20%20%20%20%20%20%20%20Cache%5B%28Local%20SQLite%20%26%20Shared%20Preferences%29%5D%0A%20%20%20%20end%0A%20%20%20%20class%20Mobile_Client,UI,Sync,Cache%20client;%0A%0A%20%20%20%20subgraph%20Backend_Services%20%5BBackend%20Architecture%20-%20FastAPI%5D%0A%20%20%20%20%20%20%20%20Auth%5BAuth%20Verification%20Engine%5D%0A%20%20%20%20%20%20%20%20Router%5BREST%20Endpoints%5D%0A%20%20%20%20%20%20%20%20JSONParser%5BJSON%20Response%20Standardizer%5D%0A%20%20%20%20end%0A%20%20%20%20class%20Backend_Services,Auth,Router,JSONParser%20backend;%0A%0A%20%20%20%20subgraph%20Data_Cloud%20%5BCloud%20%26%20Data%20Layer%5D%0A%20%20%20%20%20%20%20%20Supa%5B%28Supabase%20/%20PostgreSQL%29%5D%0A%20%20%20%20end%0A%20%20%20%20subgraph%20AI_Cloud%20%5BExternal%20Services%5D%0A%20%20%20%20%20%20%20%20OpenAI%5BAI%20Provider%20API%5D%0A%20%20%20%20end%0A%20%20%20%20class%20Data_Cloud,Supa%20storage;%0A%20%20%20%20class%20AI_Cloud,OpenAI%20external;%0A%0A%20%20%20%20UI%20--%3E%7C1.%20Triggers%20Action%7C%20Sync%0A%20%20%20%20Sync%20%3C--%3E%7C2.%20Read/Write%20Local%20Cache%7C%20Cache%0A%20%20%20%20Sync%20%3D%3D%3E%7C3.%20HTTPS%20Request%20with%20Auth%20token%7C%20Auth%0A%20%20%20%20Auth%20--%3E%20Router%0A%20%20%20%20Router%20%3C--%3E%7C4.%20Database%20Operations%7C%20Supa%0A%20%20%20%20Router%20%3D%3D%3E%7C5.%20Text%20Prompt%20Processing%7C%20OpenAI%0A%20%20%20%20OpenAI%20%3D%3D%3E%7C6.%20Raw%20AI%20Response%7C%20JSONParser%0A%20%20%20%20JSONParser%20%3D%3D%3E%7C7.%20Structured%20JSON%20Payload%7C%20Router%0A%20%20%20%20Router%20%3D%3D%3E%7C8.%20HTTPS%20Secure%20Response%7C%20Sync%0A%20%20%20%20Sync%20%3D%3D%3E%7C9.%20Dynamic%20Widget%20Building%7C%20UI)
-
 
 ### What's Next?
 
@@ -96,3 +90,58 @@ Komen is in active development. The current roadmap focuses on expanding the pla
 **Built by Denzel Gota**
 
 Computer Engineering Student | Mozambique
+
+
+### System Architecture Diagram
+
+graph TD
+    %% Styling Classes for a Clean Technical Look
+    classDef client fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef backend fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
+    classDef storage fill:#efebe9,stroke:#5d4037,stroke-width:2px;
+    classDef external fill:#ede7f6,stroke:#5e35b1,stroke-width:2px;
+
+    %% Mobile Client Nodes
+    subgraph Mobile_Client [Mobile Client - Flutter]
+        UI[Flutter UI / Widgets]
+        Sync[Sync Engine]
+        Cache[(Local SQLite & Shared Preferences)]
+        WV[WebView Environment]
+    end
+    class Mobile_Client,UI,Sync,Cache,WV client;
+
+    %% Backend Nodes
+    subgraph Backend_Services [Backend Architecture - FastAPI]
+        Auth[Auth Verification Engine]
+        Router[REST Endpoints]
+        JSONParser[JSON Response Standardizer]
+    end
+    class Backend_Services,Auth,Router,JSONParser backend;
+
+    %% Data and External Services Nodes
+    subgraph Data_Cloud [Cloud & Data Layer]
+        Supa[(Supabase / PostgreSQL)]
+    end
+    subgraph AI_Cloud [External Services]
+        OpenAI[AI Provider API]
+    end
+    class Data_Cloud,Supa storage;
+    class AI_Cloud,OpenAI external;
+
+    %% Flows and Relationships (Strictly HTTPS)
+    UI -->|1. Triggers Action| Sync
+    Sync <-->|2. Read/Write Local Cache| Cache
+    Sync ==>|3. HTTPS Request with Auth token| Auth
+    Auth --> Router
+    
+    %% Relational Data Flow
+    Router <-->|4. Database Operations| Supa
+    
+    %% AI Flow and Dynamic Rendering
+    Router ==>|5. Text Prompt Processing| OpenAI
+    OpenAI ==>|6. Raw AI Response| JSONParser
+    JSONParser ==>|7. Structured JSON Payload| Router
+    
+    %% Response to App
+    Router ==>|8. HTTPS Secure Response| Sync
+    Sync ==>|9. Dynamic Widget Building| UI
