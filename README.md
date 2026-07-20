@@ -54,6 +54,14 @@ Database & Storage (Supabase)
 
 ```
 
+
+
+
+### System Architecture Diagram
+<p align="center">
+  <img src="assets/architecture.jpg" width="30%" alt="System Architecture Diagram" />
+</p>
+
 ---
 
 ## The Engineering Journey: Challenges & Solutions
@@ -77,6 +85,7 @@ As the app grew to include study diaries, progress tracking, and gamified elemen
 Designing the Supabase schema required forward-thinking. I had to model relations for users, study sessions, dynamic AI content, and progress tracking in a way that remains performant today but is flexible enough to support future features like learning analytics and team collaboration.
 
 
+
 ### What's Next?
 
 Komen is in active development. The current roadmap focuses on expanding the platform's reach and intelligence:
@@ -91,57 +100,3 @@ Komen is in active development. The current roadmap focuses on expanding the pla
 
 Computer Engineering Student | Mozambique
 
-
-### System Architecture Diagram
-
-graph TD
-    %% Styling Classes for a Clean Technical Look
-    classDef client fill:#f9f9f9,stroke:#333,stroke-width:2px;
-    classDef backend fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
-    classDef storage fill:#efebe9,stroke:#5d4037,stroke-width:2px;
-    classDef external fill:#ede7f6,stroke:#5e35b1,stroke-width:2px;
-
-    %% Mobile Client Nodes
-    subgraph Mobile_Client [Mobile Client - Flutter]
-        UI[Flutter UI / Widgets]
-        Sync[Sync Engine]
-        Cache[(Local SQLite & Shared Preferences)]
-        WV[WebView Environment]
-    end
-    class Mobile_Client,UI,Sync,Cache,WV client;
-
-    %% Backend Nodes
-    subgraph Backend_Services [Backend Architecture - FastAPI]
-        Auth[Auth Verification Engine]
-        Router[REST Endpoints]
-        JSONParser[JSON Response Standardizer]
-    end
-    class Backend_Services,Auth,Router,JSONParser backend;
-
-    %% Data and External Services Nodes
-    subgraph Data_Cloud [Cloud & Data Layer]
-        Supa[(Supabase / PostgreSQL)]
-    end
-    subgraph AI_Cloud [External Services]
-        OpenAI[AI Provider API]
-    end
-    class Data_Cloud,Supa storage;
-    class AI_Cloud,OpenAI external;
-
-    %% Flows and Relationships (Strictly HTTPS)
-    UI -->|1. Triggers Action| Sync
-    Sync <-->|2. Read/Write Local Cache| Cache
-    Sync ==>|3. HTTPS Request with Auth token| Auth
-    Auth --> Router
-    
-    %% Relational Data Flow
-    Router <-->|4. Database Operations| Supa
-    
-    %% AI Flow and Dynamic Rendering
-    Router ==>|5. Text Prompt Processing| OpenAI
-    OpenAI ==>|6. Raw AI Response| JSONParser
-    JSONParser ==>|7. Structured JSON Payload| Router
-    
-    %% Response to App
-    Router ==>|8. HTTPS Secure Response| Sync
-    Sync ==>|9. Dynamic Widget Building| UI
