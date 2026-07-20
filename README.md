@@ -134,7 +134,7 @@ graph TD
     Sync ==>|9. Dynamic Widget Building| UI
 
     %% Internal Navigation Link
-    UI --> WV
+    UI --> WV ```
 
 
 
