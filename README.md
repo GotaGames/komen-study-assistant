@@ -77,15 +77,16 @@ As the app grew to include study diaries, progress tracking, and gamified elemen
 Designing the Supabase schema required forward-thinking. I had to model relations for users, study sessions, dynamic AI content, and progress tracking in a way that remains performant today but is flexible enough to support future features like learning analytics and team collaboration.
 
 ### System Architecture Diagram
+
 ```mermaid
 graph TD
-    %% Style Classes (Clean Technical Visual)
+    %% Styling Classes for a Clean Technical Look
     classDef client fill:#f9f9f9,stroke:#333,stroke-width:2px;
     classDef backend fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
     classDef storage fill:#efebe9,stroke:#5d4037,stroke-width:2px;
     classDef external fill:#ede7f6,stroke:#5e35b1,stroke-width:2px;
 
-    %% Client Nodes (Mobile)
+    %% Mobile Client Nodes
     subgraph Mobile_Client [Mobile Client - Flutter]
         UI[Flutter UI / Widgets]
         Sync[Sync Engine]
@@ -102,7 +103,7 @@ graph TD
     end
     class Backend_Services,Auth,Router,JSONParser backend;
 
-    %% Data Nodes and External Services
+    %% Data and External Services Nodes
     subgraph Data_Cloud [Cloud & Data Layer]
         Supa[(Supabase / PostgreSQL)]
     end
@@ -112,13 +113,13 @@ graph TD
     class Data_Cloud,Supa storage;
     class AI_Cloud,OpenAI external;
 
-    %% Flows and Relationships (Always HTTPS)
+    %% Flows and Relationships (Strictly HTTPS)
     UI -->|1. Triggers Action| Sync
     Sync <-->|2. Read/Write Local Cache| Cache
     Sync ==>|3. HTTPS Request with Auth token| Auth
     Auth --> Router
     
-    %% Business/Relational Data Flow
+    %% Relational Data Flow
     Router <-->|4. Database Operations| Supa
     
     %% AI Flow and Dynamic Rendering
@@ -128,11 +129,10 @@ graph TD
     
     %% Response to App
     Router ==>|8. HTTPS Secure Response| Sync
-    Sync -->|9. Dynamic Widget Building| UI
+    Sync ==>|9. Dynamic Widget Building| UI
 
-    %% Note on internal navigation
+    %% Internal Navigation Link
     UI --- WV
-
 
 ---
 
