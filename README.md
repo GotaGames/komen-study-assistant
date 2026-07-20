@@ -78,6 +78,8 @@ Designing the Supabase schema required forward-thinking. I had to model relation
 
 ### System Architecture Diagram
 
+### System Architecture Diagram
+
 ```mermaid
 graph TD
     %% Styling Classes for a Clean Technical Look
@@ -132,11 +134,11 @@ graph TD
     Sync ==>|9. Dynamic Widget Building| UI
 
     %% Internal Navigation Link
-    UI --- WV
+    UI --> WV
 
----
 
-## What's Next?
+
+What's Next?
 
 Komen is in active development. The current roadmap focuses on expanding the platform's reach and intelligence:
 
